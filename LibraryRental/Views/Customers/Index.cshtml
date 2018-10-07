@@ -1,0 +1,37 @@
+﻿@model IEnumerable<LibraryRental.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+    <text>No Customers yet</text>
+} else
+{
+    <table class="table table-bordered table-responsive table-condensed table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Birthdate</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var customer in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(@customer.Name, "Edit", new { id = customer.Id })</td>
+                <td>@customer.Email</td>
+                <td>@customer.PhoneNumber</td>
+                <td>@customer.Birthdate</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = customer.Id })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,20 @@
+﻿@model LibraryRental.ViewModel.BookAuthorViewModel
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Author Form</h2>
+
+@using (Html.BeginForm("Save", "Authors"))  
+{
+    <div class="form-group">
+        @Html.LabelFor(v => v.Author.Name)
+        @Html.TextBoxFor(v => v.Author.Name, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(v => v.Author.Name)
+    </div>
+
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(a => a.Author.Id)
+    <button type="submit" class="btn-primary">Submit</button>
+}

@@ -1,0 +1,41 @@
+﻿@model LibraryRental.Models.Customer
+
+@{
+    ViewBag.Title = "CustomerForm";
+}
+
+<h2>Customer Form</h2>
+
+@using (Html.BeginForm("Save", "Customers"))
+{
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Email)
+        @Html.TextBoxFor(c => c.Email, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Email)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.PhoneNumber)
+        @Html.TextBoxFor(c => c.PhoneNumber, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.PhoneNumber)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Birthdate)
+        @Html.TextBoxFor(c => c.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Birthdate)
+    </div>
+
+    @Html.HiddenFor(c => c.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn-primary">Submit</button>
+}
+

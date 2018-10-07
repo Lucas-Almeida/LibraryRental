@@ -1,0 +1,28 @@
+﻿@model LibraryRental.ViewModel.BookAuthorViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.Author.Name Books</h2>
+
+<table class="table table-bordered table-condensed table-hover table-responsive">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>ISBN</th>
+            <th>Number in Stock</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach(var book in Model.Books)
+            {
+                <td>@book.Title</td>
+                <td>@book.Isbn</td>
+                <td>@book.NumberInStock</td>
+            }
+        </tr>
+    </tbody>
+</table>
+

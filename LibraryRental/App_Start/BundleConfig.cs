@@ -11,6 +11,18 @@ namespace LibraryRental
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/lib").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/bootstrap.js",
+                "~/scripts/bootbox.js",
+                "~/Scripts/respond.js",
+                "~/scripts/datatables/jquery.datatables.js",
+                "~/scripts/datatables/datatables.bootstrap.js",
+                "~/scripts/typeahead.bundle.js",
+                "~/scripts/toastr.js",
+                "~/scripts/typeahead.bundle.js"
+            ));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -24,7 +36,9 @@ namespace LibraryRental
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/typeahead.css"
+                      ));
         }
     }
 }

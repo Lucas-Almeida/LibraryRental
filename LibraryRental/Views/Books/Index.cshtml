@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LibraryRental.Models.Book>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+    <text>No books yet</text>
+}
+else
+{
+    <table class="table table-bordered table-responsive table-condensed table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>ISBN</th>
+                <th>Number in Stock</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(@book.Title, "Edit", new { id = book.Id })</td>
+                <td>@book.Isbn</td>
+                <td>@book.NumberInStock</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = book.Id })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}

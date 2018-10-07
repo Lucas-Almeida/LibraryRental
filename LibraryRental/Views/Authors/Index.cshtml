@@ -1,0 +1,63 @@
+﻿@model IEnumerable<LibraryRental.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (!Model.Any())
+{
+    <text>No Customers yet</text>
+}
+else
+{
+    <table id="authors" class="table table-bordered table-responsive table-condensed table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Author</th>
+                <th>Books</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var author in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(author.Name, "Edit", new { id = author.Id })</td>
+                <td>@Html.ActionLink("Details", "Details", "Books", new { id = author.Id }, null)</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id = author.Id })</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@*@section scripts {
+    <script>
+        $(document).Ready(function () {
+            var table = $("authors").DataTable({
+                ajax: {
+                    url: "/authors",
+                    dataSrc = ""
+                },
+
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, author) {
+                            return "<a href='/authors/edit/" + author.id + "'>" + author.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "books.title"
+                    },
+                    {
+                        data: "id",
+                    
+                    }
+                ]
+            }) 
+        })
+    </script>
+}*@
